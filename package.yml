@@ -1,0 +1,19 @@
+package: cloud.lazycat.app.stremio
+version: 1.2.16
+name: Stremio
+description: 流媒体神器
+min_os_version: 1.5.0
+homepage: https://www.stremio.com
+author: stremio
+
+permissions:
+  required:
+    - net.internet
+
+locales:
+  zh:
+    name: "Stremio"
+    description: "流媒体神器，一站式发现和观看影视内容"
+  en:
+    name: "Stremio"
+    description: "Modern media center for discovering and watching content"

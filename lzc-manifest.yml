@@ -1,19 +1,12 @@
-lzc-sdk-version: "0.1"
-name: Stremio
-package: cloud.lazycat.app.stremio
-version: 1.1.20
-description: 流媒体神器
-homepage: https://www.stremio.com
-author: stremio
 application:
   subdomain: stremio
   background_task: true
   public_path:
     - /
     - /stream
-  routes:
-    - /=http://stremio:8080
-
+  upstreams:
+    - location: /
+      backend: http://stremio:8080
   ingress:
     - protocol: tcp
       port: 11470
@@ -21,10 +14,10 @@ application:
 
 services:
   stremio:
-    image: registry.lazycat.cloud/czyt/tsaridas/stremio-docker:bb391e1df26feb3c
+    # tsaridas/stremio-docker:v1.2.16
+    image: registry.lazycat.cloud/czyt/tsaridas/stremio-docker:e720961d44281f09
     environment:
       - NO_CORS=1
       - SERVER_URL=http://stremio:11470/
-
     binds:
       - /lzcapp/var/stremio:/root/.stremio-server
